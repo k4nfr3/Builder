@@ -11,7 +11,7 @@ deploy:
   description: 'Release of pentest tools tag created by AppVeyor build $(appveyor_build_version). Pass: $(_7Z_PASSWORD_)'
   provider: GitHub
   auth_token:
-    secure: eZRHwyPjuMeVQRrqACuLErDIYlt9uteRsPW0m06m2yBuHk2Qf9h46U5Z3d6Ul4Tk # your encrypted token from GitHub
+    secure: XyIZ5B+rNxdI9/DLAdViImAlMaxO8gWALx3xCMBf2XMG451KZK+X7+CQimMsv5bY # your encrypted token from GitHub
   # see https://www.appveyor.com/docs/packaging-artifacts/#packaging-multiple-files-in-different-locations-into-a-single-archive
   #artifact: '*.7z'
   draft: false
