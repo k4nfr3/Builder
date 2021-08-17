@@ -20,10 +20,10 @@ CALL build-py.bat ticketer , ticketer , 0
 
 
 CALL clone.bat NinjaStyle82/rbcd_permissions
-CALL build-py.bat webclientservicescanner , webclientservicescanner , 0
+CALL build-py.bat rbcd_permissions , rbcd_permissions , 0
 
 
-CALL clone.bat Hackndo/WebclientServiceScanner
+CALL clone.bat k4nfr3/WebclientServiceScanner
 cd webclientservicescanner
 CALL build-py.bat console , WebclientServiceScanner , 0
 
