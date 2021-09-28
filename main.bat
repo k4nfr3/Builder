@@ -27,6 +27,9 @@ CALL clone.bat k4nfr3/WebclientServiceScanner
 cd webclientservicescanner
 CALL build-py.bat console , WebclientServiceScanner , 0
 
+CALL clone.bat login-securite/DonPAPI
+cd DonPAPI
+CALL build-py.bat DonPAPI , DonPAPI , 0
 
 :: See https://dirkjanm.io/krbrelayx-unconstrained-delegation-abuse-toolkit/
 CALL clone.bat dirkjanm/krbrelayx
