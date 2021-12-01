@@ -1,3 +1,12 @@
+From edc46838d5647ef590f8bfeb65d673103c1362a5 Mon Sep 17 00:00:00 2001
+From: k4nfr3 <junk@bussink.net>
+Date: Wed, 1 Dec 2021 15:39:58 +0100
+Subject: [PATCH] xdr patch
+
+---
+ .../lsadecryptor/packages/msv/decryptor.py    | 43 ++++++++++---------
+ 1 file changed, 23 insertions(+), 20 deletions(-)
+
 diff --git a/pypykatz/lsadecryptor/packages/msv/decryptor.py b/pypykatz/lsadecryptor/packages/msv/decryptor.py
 index 046fd53..9fad238 100644
 --- a/pypykatz/lsadecryptor/packages/msv/decryptor.py
@@ -43,3 +52,13 @@ index 046fd53..9fad238 100644
 +                       self.reader.move(luid_pos - offset)
 +                       et = self.decryptor_template.list_entry(self.reader).finaltype
 +                       self.reader.move(luid_pos - offset)
++                       test_ptr = et(self.reader)
++                       if test_ptr.LocallyUniqueIdentifier == needle_luid:
++                               print('HIT!')
++                               entry_ptr = self.decryptor_template.list_entry(self.reader)
++                               try:
++                                       self.walk_list(test_ptr.Flink, self.add_entry)
++                               except Exception as e:
++                                       print('ERR! %s' % e)
+--
+2.17.1
