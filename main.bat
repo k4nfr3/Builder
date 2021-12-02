@@ -46,11 +46,11 @@ CALL clone.bat skelsec/pypykatz
 :: https://skelsec.medium.com/play-with-katz-get-scratched-6c2c350fadf2
 :: https://drive.google.com/drive/folders/1KT2yWziJHvaH41jtZMsatey2KycWF824?usp=sharing
 :: From https://github.com/skelsec/pypykatz/commit/f53ed8c691b32c2a5a0189604d56afe4732fb639
-git config --global user.email "appveyor@appveyor-vm.com"
-git config --global user.name "k4nfr3"
+git config user.email "appveyor@appveyor-vm.com"
+git config user.name "k4nfr3"
+cd pypykatz
 git am %scriptpath%\pypykatz\0001-xdrprotection.patch
 git am %scriptpath%\pypykatz\Add-debug-message-for-method-handledup.patch
-cd pypykatz
 cp pypykatz.py pypychat.py
 CALL build-py.bat __main__ , pypykatz , 0
 CALL build-py.bat __main__ , pypychat , 0
