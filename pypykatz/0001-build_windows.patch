@@ -1,0 +1,27 @@
+From 1bf4993350a61961b45c14be02d1219d7107374f Mon Sep 17 00:00:00 2001
+From: k4nfr3 <junk@bussink.net>
+Date: Thu, 2 Dec 2021 17:36:28 +0100
+Subject: [PATCH] build_windows
+
+---
+ setup.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 5791baa..3e94a60 100644
+--- a/setup.py
++++ b/setup.py
+@@ -64,5 +64,9 @@ setup(
+ 	# Thank you for runing it for everyone.
+ 	# 
+ 	# 
+-	entry_points=ep if platform.system().lower() != 'windows' else {}
++	entry_points={
++		'console_scripts': [
++			'pypykatz = pypykatz.__main__:main',
++		],
++	}
+ )
+-- 
+2.17.1
+
