@@ -47,8 +47,8 @@ CALL clone.bat skelsec/pypykatz
 :: https://drive.google.com/drive/folders/1KT2yWziJHvaH41jtZMsatey2KycWF824?usp=sharing
 :: From https://github.com/skelsec/pypykatz/commit/f53ed8c691b32c2a5a0189604d56afe4732fb639
 git config --global user.email "appveyor@appveyor-vm.com"
-git config --global user.name "1mm0rt41PC"
-git am %scriptpath%\pypykatz\BruteForcer.patch
+git config --global user.name "k4nfr3"
+git am %scriptpath%\pypykatz\0001-xdrprotection.patch
 git am %scriptpath%\pypykatz\Add-debug-message-for-method-handledup.patch
 cd pypykatz
 cp pypykatz.py pypychat.py
