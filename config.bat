@@ -1,3 +1,7 @@
+git config user.email "junk@bussink.net"
+git config user.name "k4nfr3"
+
+
 IF "%LOADED_config_bat%" == "1" EXIT /B 0
 SET LOADED_config_bat=1
 SET scriptpath=%~dp0
