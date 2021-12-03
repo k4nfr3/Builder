@@ -50,6 +50,7 @@ git config user.name "1mm0rt41PC"
 git am %scriptpath%\pypykatz\0001-xdrprotection.patch
 git am %scriptpath%\pypykatz\0001-Add-debug-message-for-method-handledup.patch
 git am %scriptpath%\pypykatz\0001-build_windows.patch
+pwd
 CALL build-py.bat __main__ , pypykatz , 0
 
 
