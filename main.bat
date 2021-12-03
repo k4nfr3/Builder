@@ -45,8 +45,6 @@ CALL clone.bat skelsec/pypykatz
 :: https://drive.google.com/drive/folders/1KT2yWziJHvaH41jtZMsatey2KycWF824?usp=sharing
 :: From https://github.com/skelsec/pypykatz/commit/f53ed8c691b32c2a5a0189604d56afe4732fb639
 cd pypykatz
-git config user.email "appveyor@appveyor-vm.com"
-git config user.name "1mm0rt41PC"
 git am %scriptpath%\pypykatz\0001-xdrprotection.patch
 git am %scriptpath%\pypykatz\0001-Add-debug-message-for-method-handledup.patch
 git am %scriptpath%\pypykatz\0001-build_windows.patch
