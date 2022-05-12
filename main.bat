@@ -70,11 +70,11 @@ CALL build-py.bat bloodhound, bloodhound , 0
 
 :: DISABLED => See https://github.com/fox-it/mitm6/issues/3
 :: Build mitm6
-::CALL clone.bat fox-it/mitm6
+CALL clone.bat fox-it/mitm6
 ::cd mitm6
 ::%py64% -m pip install service_identity
 ::%py32% -m pip install service_identity
-::CALL build-py.bat mitm6, mitm6 , 0
+CALL build-py.bat mitm6, mitm6 , 0
 
 
 :: Build Responder3
