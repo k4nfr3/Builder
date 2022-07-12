@@ -1,8 +1,14 @@
 CALL config.bat
 CALL pre-install.bat
 
+CALL clone.bat login-securite/DonPAPI
+CALL build-py.bat DonPAPI, DonPAPI, 0
+
 CALL clone.bat zyn3rgy/LdapRelayScan
 CALL build-py.bat LdapRelayScan, LdapRelayScan, 0
+
+
+
 
 :: Build impacket
 CALL clone.bat SecureAuthCorp/impacket
