@@ -10,7 +10,7 @@ IF "%APPVEYOR_BUILD_FOLDER%" NEQ "^%APPVEYOR_BUILD_FOLDER^%" SET scriptpath=%APP
 IF "%scriptpath%" == "" SET scriptpath=%CD%
 IF %scriptpath% == ^%scriptpath^% SET scriptpath=%CD%
 SET PATH=%PATH%;%scriptpath%
-SET py64=C:\Python38-x64\python.exe
+SET py64=C:\Python39-x64\python.exe
 SET py32=C:\Python38\python.exe
 SET ENABLE_BUILD_X86=0
 SET keylen=64
