@@ -57,11 +57,8 @@ REM git am %scriptpath%\pypykatz\0001-xdrprotection.patch
 REM git am %scriptpath%\pypykatz\0001-Add-debug-message-for-method-handledup.patch
 REM git am %scriptpath%\pypykatz\0001-build_windows.patch
 pwd
+cd pypykatz
 CALL build-py.bat __main__ , pypykatz , 0
-cd C:\Python39-x64\Scripts\
-appveyor PushArtifact minidump.exe
-appveyor PushArtifact asmbscanner.exe
-appveyor PushArtifact *.exe
 
 REM CALL clone.bat skelsec/kerberoast
 REM cd kerberoast
