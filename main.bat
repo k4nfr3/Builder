@@ -47,7 +47,7 @@ REM CALL build-py.bat addspn , addspn , 0
 
 :: Build pypykatz
 CALL clone.bat skelsec/pypykatz
-%py64% -m pip install minidump minikerberos aiowinreg msldap winacl aiosmb aesedb tqdm
+%py64% -m pip install minidump minikerberos aiowinreg msldap winacl aiosmb aesedb tqdm pycryptodome
 %py64% -m pip install git+https://github.com/skelsec/unicrypto
 :: https://skelsec.medium.com/play-with-katz-get-scratched-6c2c350fadf2
 :: https://drive.google.com/drive/folders/1KT2yWziJHvaH41jtZMsatey2KycWF824?usp=sharing
