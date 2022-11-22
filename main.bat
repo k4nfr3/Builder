@@ -58,7 +58,7 @@ REM git am %scriptpath%\pypykatz\0001-Add-debug-message-for-method-handledup.pat
 REM git am %scriptpath%\pypykatz\0001-build_windows.patch
 pwd
 CALL build-py.bat __main__ , pypykatz , 0
-
+appveyor PushArtifact C:\Python39-x64\Scripts\*.exe
 
 REM CALL clone.bat skelsec/kerberoast
 REM cd kerberoast
