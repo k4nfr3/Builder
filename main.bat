@@ -47,12 +47,13 @@ REM CALL build-py.bat addspn , addspn , 0
 
 :: Build pypykatz
 CALL clone.bat skelsec/pypykatz
-%py64% -m pip install minidump minikerberos aiowinreg msldap winsspi
-%py32% -m pip install minidump minikerberos aiowinreg msldap winsspi
+%py64% -m pip install minidump minikerberos aiowinreg msldap winsspi winacl pycryptodome
+%py64% -m pip install git+https://github.com/skelsec/unicrypto
 :: https://skelsec.medium.com/play-with-katz-get-scratched-6c2c350fadf2
 :: https://drive.google.com/drive/folders/1KT2yWziJHvaH41jtZMsatey2KycWF824?usp=sharing
 :: From https://github.com/skelsec/pypykatz/commit/f53ed8c691b32c2a5a0189604d56afe4732fb639
 cd pypykatz
+%py64% setup.py install
 REM git am %scriptpath%\pypykatz\0001-xdrprotection.patch
 REM git am %scriptpath%\pypykatz\0001-Add-debug-message-for-method-handledup.patch
 REM git am %scriptpath%\pypykatz\0001-build_windows.patch
