@@ -1,48 +1,48 @@
 CALL config.bat
 CALL pre-install.bat
 
-CALL clone.bat login-securite/DonPAPI
-CALL build-py.bat DonPAPI, DonPAPI, 0
+REM CALL clone.bat login-securite/DonPAPI
+REM CALL build-py.bat DonPAPI, DonPAPI, 0
 
-CALL clone.bat zyn3rgy/LdapRelayScan
-CALL build-py.bat LdapRelayScan, LdapRelayScan, 0
+REM CALL clone.bat zyn3rgy/LdapRelayScan
+REM CALL build-py.bat LdapRelayScan, LdapRelayScan, 0
 
 
 
 
 :: Build impacket
-CALL clone.bat SecureAuthCorp/impacket
-cd examples
-CALL build-py.bat wmiexec , wmiexec , 0
-CALL build-py.bat secretsdump , secretsdump , 0
-CALL build-py.bat smbserver , smbserver , 0
-CALL build-py.bat smbclient , smbclient , 0
-CALL build-py.bat smbexec , smbexec , 0
-CALL build-py.bat psexec , psexec , 0
-CALL build-py.bat dcomexec , dcomexec , 0
-CALL build-py.bat GetUserSPNs , GetUserSPNs , 0
-CALL build-py.bat GetNPUsers , GetNPUsers , 0
-CALL build-py.bat getST , getST , 0
-CALL build-py.bat getTGT , getTGT , 0
-CALL build-py.bat ticketer , ticketer , 0
+REM CALL clone.bat SecureAuthCorp/impacket
+REM cd examples
+REM CALL build-py.bat wmiexec , wmiexec , 0
+REM CALL build-py.bat secretsdump , secretsdump , 0
+REM CALL build-py.bat smbserver , smbserver , 0
+REM CALL build-py.bat smbclient , smbclient , 0
+REM CALL build-py.bat smbexec , smbexec , 0
+REM CALL build-py.bat psexec , psexec , 0
+REM CALL build-py.bat dcomexec , dcomexec , 0
+REM CALL build-py.bat GetUserSPNs , GetUserSPNs , 0
+REM CALL build-py.bat GetNPUsers , GetNPUsers , 0
+REM CALL build-py.bat getST , getST , 0
+REM CALL build-py.bat getTGT , getTGT , 0
+REM CALL build-py.bat ticketer , ticketer , 0
 
 
-CALL clone.bat NinjaStyle82/rbcd_permissions
-CALL build-py.bat rbcd , rbcd , 0
+REM CALL clone.bat NinjaStyle82/rbcd_permissions
+REM CALL build-py.bat rbcd , rbcd , 0
 
 
-CALL clone.bat Hackndo/WebclientServiceScanner
-cd webclientservicescanner
-git am %scriptpath%\WebclientServiceScanner\0001-Add-color-by-k4nfr3-WebclientServiceScanner.patch
-CALL build-py.bat console , WebclientServiceScanner , 0
+REM CALL clone.bat Hackndo/WebclientServiceScanner
+REM cd webclientservicescanner
+REM git am %scriptpath%\WebclientServiceScanner\0001-Add-color-by-k4nfr3-WebclientServiceScanner.patch
+REM CALL build-py.bat console , WebclientServiceScanner , 0
 
 
 :: See https://dirkjanm.io/krbrelayx-unconstrained-delegation-abuse-toolkit/
-CALL clone.bat dirkjanm/krbrelayx
-CALL build-py.bat krbrelayx , krbrelayx , 0
-CALL build-py.bat printerbug , printerbug , 0
-CALL build-py.bat dnstool , dnstool , 0
-CALL build-py.bat addspn , addspn , 0
+REM CALL clone.bat dirkjanm/krbrelayx
+REM CALL build-py.bat krbrelayx , krbrelayx , 0
+REM CALL build-py.bat printerbug , printerbug , 0
+REM CALL build-py.bat dnstool , dnstool , 0
+REM CALL build-py.bat addspn , addspn , 0
 
 
 :: Build pypykatz
@@ -53,34 +53,34 @@ CALL clone.bat skelsec/pypykatz
 :: https://drive.google.com/drive/folders/1KT2yWziJHvaH41jtZMsatey2KycWF824?usp=sharing
 :: From https://github.com/skelsec/pypykatz/commit/f53ed8c691b32c2a5a0189604d56afe4732fb639
 cd pypykatz
-git am %scriptpath%\pypykatz\0001-xdrprotection.patch
-git am %scriptpath%\pypykatz\0001-Add-debug-message-for-method-handledup.patch
-git am %scriptpath%\pypykatz\0001-build_windows.patch
+REM git am %scriptpath%\pypykatz\0001-xdrprotection.patch
+REM git am %scriptpath%\pypykatz\0001-Add-debug-message-for-method-handledup.patch
+REM git am %scriptpath%\pypykatz\0001-build_windows.patch
 pwd
 CALL build-py.bat __main__ , pypykatz , 0
 
 
-CALL clone.bat skelsec/kerberoast
-cd kerberoast
-CALL build-py.bat kerberoast , kerberoast , 0
+REM CALL clone.bat skelsec/kerberoast
+REM cd kerberoast
+REM CALL build-py.bat kerberoast , kerberoast , 0
 
 
 :: Build BloodHound
-CALL clone.bat fox-it/BloodHound.py
+REM CALL clone.bat fox-it/BloodHound.py
 :: Patch bloodhound to avoid "unrecognized arguments: --multiprocessing-fork"
 :: In case where the patch doesn't work DO NOT USE "-c ALL" and avoid DCOnly and ACL. Use -c "Group,LocalAdmin,Session,Trusts,DCOM,RDP,PSRemote,LoggedOn,ObjectProps"
 :: Maybe the argument "--disable-pooling" can do the tricks
-%py64% -c "f=open('bloodhound/__init__.py','r');d=f.read().replace('    main()','    import multiprocessing;multiprocessing.freeze_support();main()');f.close();f=open('bloodhound/__init__.py','w').write(d);f.close();"
-CALL build-py.bat bloodhound, bloodhound , 0
+REM %py64% -c "f=open('bloodhound/__init__.py','r');d=f.read().replace('    main()','    import multiprocessing;multiprocessing.freeze_support();main()');f.close();f=open('bloodhound/__init__.py','w').write(d);f.close();"
+REM CALL build-py.bat bloodhound, bloodhound , 0
 
 
 :: DISABLED => See https://github.com/fox-it/mitm6/issues/3
 :: Build mitm6
-CALL clone.bat fox-it/mitm6
+REM CALL clone.bat fox-it/mitm6
 ::cd mitm6
 ::%py64% -m pip install service_identity
 ::%py32% -m pip install service_identity
-CALL build-py.bat mitm6, mitm6 , 0
+REM CALL build-py.bat mitm6, mitm6 , 0
 
 
 :: Build Responder3
@@ -109,50 +109,50 @@ CALL build-py.bat mitm6, mitm6 , 0
 
 
 :: Build gpppfinder
-CALL clone.bat https://bitbucket.org/grimhacker/gpppfinder.git
-CALL build-py.bat cli , gpppfinder , 0
+REM CALL clone.bat https://bitbucket.org/grimhacker/gpppfinder.git
+REM CALL build-py.bat cli , gpppfinder , 0
 
 
-CALL clone.bat GhostPack/Rubeus
-CALL log.bat "Building Rubeus..."
-msbuild /property:Configuration=Release
-CALL log.bat "Create Rubeus.7z with required files..."
-cd Rubeus\bin\release
-Rubeus.exe -h
-set _err=%ERRORLEVEL%
-set _errorExpected=0
-IF "%ERRORLEVEL%" == "%_errorExpected%" (
-	CALL log.bat "✅ Build Rubeus.exe OK" 1
-	echo Rubeus.exe >Rubeus.lst7z
-	echo Rubeus.exe.config >>Rubeus.lst7z
-	7z a -t7z -mhe -p%_7Z_PASSWORD_% %_7Z_OUPUT_%\Rubeus.7z @Rubeus.lst7z
-	appveyor PushArtifact %_7Z_OUPUT_%\Rubeus.7z
-	copy Rubeus.exe %scriptpath%\bin\Rubeus.exe
-) else (
-	CALL log.bat ERR "FAIL to build a valid Rubeus.exe (This bin return %_err%, expected %_errorExpected%)..." , 1
-)
+REM CALL clone.bat GhostPack/Rubeus
+REM CALL log.bat "Building Rubeus..."
+REM msbuild /property:Configuration=Release
+REM CALL log.bat "Create Rubeus.7z with required files..."
+REM cd Rubeus\bin\release
+REM Rubeus.exe -h
+REM set _err=%ERRORLEVEL%
+REM set _errorExpected=0
+REM IF "%ERRORLEVEL%" == "%_errorExpected%" (
+REM 	CALL log.bat "✅ Build Rubeus.exe OK" 1
+REM 	echo Rubeus.exe >Rubeus.lst7z
+REM 	echo Rubeus.exe.config >>Rubeus.lst7z
+REM 	7z a -t7z -mhe -p%_7Z_PASSWORD_% %_7Z_OUPUT_%\Rubeus.7z @Rubeus.lst7z
+REM 	appveyor PushArtifact %_7Z_OUPUT_%\Rubeus.7z
+REM 	copy Rubeus.exe %scriptpath%\bin\Rubeus.exe
+REM ) else (
+REM 	CALL log.bat ERR "FAIL to build a valid Rubeus.exe (This bin return %_err%, expected %_errorExpected%)..." , 1
+REM )
 
 
-CALL clone.bat deepinstinct/LsassSilentProcessExit
-CALL log.bat "Building LsassSilentProcessExit..."
-msbuild /property:Configuration=Release
-CALL log.bat "Create LsassSilentProcessExit.7z with required files..."
-cd x64\Release
-:: Running LsassSilentProcessExit will crash the script :'(
-IF EXIST LsassSilentProcessExit.exe (
-	CALL log.bat "✅ Build LsassSilentProcessExit.exe OK" 1
-	echo LsassSilentProcessExit.exe >LsassSilentProcessExit.lst7z
-	7z a -t7z -mhe -p%_7Z_PASSWORD_% %_7Z_OUPUT_%\LsassSilentProcessExit.7z @LsassSilentProcessExit.lst7z
-	appveyor PushArtifact %_7Z_OUPUT_%\LsassSilentProcessExit.7z
-	copy LsassSilentProcessExit.exe %scriptpath%\bin\LsassSilentProcessExit.exe
-) else (
-	CALL log.bat ERR "FAIL to build a valid LsassSilentProcessExit.exe ..." , 1
-)
+REM CALL clone.bat deepinstinct/LsassSilentProcessExit
+REM CALL log.bat "Building LsassSilentProcessExit..."
+REM msbuild /property:Configuration=Release
+REM CALL log.bat "Create LsassSilentProcessExit.7z with required files..."
+REM cd x64\Release
+REM :: Running LsassSilentProcessExit will crash the script :'(
+REM IF EXIST LsassSilentProcessExit.exe (
+REM 	CALL log.bat "✅ Build LsassSilentProcessExit.exe OK" 1
+REM 	echo LsassSilentProcessExit.exe >LsassSilentProcessExit.lst7z
+REM 	7z a -t7z -mhe -p%_7Z_PASSWORD_% %_7Z_OUPUT_%\LsassSilentProcessExit.7z @LsassSilentProcessExit.lst7z
+REM 	appveyor PushArtifact %_7Z_OUPUT_%\LsassSilentProcessExit.7z
+REM 	copy LsassSilentProcessExit.exe %scriptpath%\bin\LsassSilentProcessExit.exe
+REM ) else (
+REM 	CALL log.bat ERR "FAIL to build a valid LsassSilentProcessExit.exe ..." , 1
+REM )
 
 
 :: Building custom-scripts
-cd %scriptpath%\custom-scripts
-CALL build-py.bat httpd , httpd , -1
+REM cd %scriptpath%\custom-scripts
+REM CALL build-py.bat httpd , httpd , -1
 
 
 :: Sync threading
