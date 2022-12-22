@@ -49,7 +49,9 @@ CALL clone.bat skelsec/pypykatz
 :: https://skelsec.medium.com/play-with-katz-get-scratched-6c2c350fadf2
 :: https://drive.google.com/drive/folders/1KT2yWziJHvaH41jtZMsatey2KycWF824?usp=sharing
 :: From https://github.com/skelsec/pypykatz/commit/f53ed8c691b32c2a5a0189604d56afe4732fb639
+echo **************** Start Patching Pypykatz *******************************
 git am %scriptpath%\pypykatz\0001-Cortex-XDR-protection-bypass.patch
+echo **************** End Patching Pypykatz *******************************
 ::git am %scriptpath%\pypykatz\Add-debug-message-for-method-handledup.patch
 %py64% setup.py install
 cd pypykatz
