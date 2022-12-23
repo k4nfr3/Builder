@@ -51,6 +51,7 @@ CALL clone.bat skelsec/pypykatz
 :: From https://github.com/skelsec/pypykatz/commit/f53ed8c691b32c2a5a0189604d56afe4732fb639
 echo **************** Start Patching Pypykatz *******************************
 git am %scriptpath%\pypykatz\0001-Cortex-XDR-protection-bypass.patch
+git am %scriptpath%\pypykatz\0001-Cortex-XDR-protection-bypass2.patch
 echo **************** End Patching Pypykatz *******************************
 ::git am %scriptpath%\pypykatz\Add-debug-message-for-method-handledup.patch
 %py64% setup.py install
